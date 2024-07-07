@@ -9,5 +9,5 @@ This is a test suite in Cypress, for coffee-cart app
    `npx cypress open` for test runner  
    `npx cypress run` for headless mode  
 
-coffee-cart app: (https://coffee-cart.app/)  
-coffee-cart repository: (https://github.com/jecfish/coffee-cart)
+coffee-cart app: https://coffee-cart.app  
+coffee-cart repository: https://github.com/jecfish/coffee-cart
