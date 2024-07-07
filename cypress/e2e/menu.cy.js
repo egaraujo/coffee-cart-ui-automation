@@ -332,6 +332,29 @@ describe('menu', () => {
     cy.get('[data-test="checkout"]').contains('Total: $7.00');
   })
 
+  it('should open cart dialog and add coffe to cart', () => {
+    cy.visit('/');
+    cy.get('[data-cy="Americano"]').rightclick();
+    cy.get('[data-cy="add-to-cart-modal"]').find('Form').contains('Yes').click();
+    cy.get('[aria-label="Cart page"]').click();
+
+    cy.get('a.router-link-active').contains('cart (1)');
+    cy.get('li.list-item').find('div').contains('Americano');
+    cy.get('li.list-item').find('div').contains('$7.00 x 1');
+    cy.get('.list-item > :nth-child(3)').contains('$7.00');
+    cy.get('[data-test="checkout"]').contains('Total: $7.00');
+  })
+
+  it('should open cart dialog and keep cart empty', () => {
+    cy.visit('/');
+    cy.get('[data-cy="Espresso"]').rightclick();
+    cy.get('[data-cy="add-to-cart-modal"]').find('Form').contains('No').click();
+    cy.get('[aria-label="Cart page"]').click();
+
+    cy.get('a.router-link-active').contains('cart (0)');
+    cy.get('p').contains('No coffee, go add some.');
+  })
+
   it('should alert on empty name for payment data', () => {
     cy.visit('/');
     cy.get('[data-cy="Espresso"]').click();
