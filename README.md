@@ -2,7 +2,7 @@
 
 This is a test suite in Cypress, for coffee-cart app
 
-1. Download the project
+1. Clone the repo
 2. Install dependencies: `npm install`
 3. Start local server: `npm run dev`
 4. Run tests from **src** folder:  
