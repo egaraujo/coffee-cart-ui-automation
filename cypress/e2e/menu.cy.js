@@ -1,25 +1,24 @@
 describe('menu', () => {
+
+  beforeEach(() => {
+    cy.visit('/');
+  })
   
   it('should display header menu with three link items', () => {
-    cy.visit('/');
     cy.get('ul').first().find('li').should('have.length', 3);
   })
 
   it('should visit each menu item link', () => {
-    cy.visit('/');
     cy.get('a').each(page => {
       cy.request(page.prop('href'));
     });
   })
   
   it('should display nine coffee coups', () => {
-    cy.visit('/');
     cy.get('li div.cup-body').should('have.length', 9);
   })
 
   it('should display Espresso information correctly', () => {
-    cy.visit('/');
-
     const coffeeHeader = cy.get('h4').contains('Espresso');
     coffeeHeader.contains('$10.00');
 
@@ -30,8 +29,6 @@ describe('menu', () => {
   })
 
   it('should display Espresso Macchiato information correctly', () => {
-    cy.visit('/');
-
     const coffeeHeader = cy.get('h4').contains('Espresso Macchiato');
     coffeeHeader.contains('$12.00');
 
@@ -45,8 +42,6 @@ describe('menu', () => {
   })
 
   it('should display Capuccino information correctly', () => {
-    cy.visit('/');
-
     const coffeeHeader = cy.get('h4').contains('Cappuccino');
     coffeeHeader.contains('$19.00');
 
@@ -63,8 +58,6 @@ describe('menu', () => {
   })
 
   it('should display Mocha information correctly', () => {
-    cy.visit('/');
-
     const coffeeHeader = cy.get('h4').contains('Mocha');
     coffeeHeader.contains('$8.00');
 
@@ -84,8 +77,6 @@ describe('menu', () => {
   })
 
   it('should display Flat White information correctly', () => {
-    cy.visit('/');
-
     const coffeeHeader = cy.get('h4').contains('Flat White');
     coffeeHeader.contains('$18.00');
 
@@ -99,8 +90,6 @@ describe('menu', () => {
   })
 
   it('should display Americano information correctly', () => {
-    cy.visit('/');
-
     const coffeeHeader = cy.get('h4').contains('Americano');
     coffeeHeader.contains('$7.00');
 
@@ -114,8 +103,6 @@ describe('menu', () => {
   })
 
   it('should display Caffe Latte information correctly', () => {
-    cy.visit('/');
-
     const coffeeHeader = cy.get('h4').contains('Cafe Latte');
     coffeeHeader.contains('$16.00');
 
@@ -132,8 +119,6 @@ describe('menu', () => {
   })
 
   it('should display Espresso Con Panna information correctly', () => {
-    cy.visit('/');
-
     const coffeeHeader = cy.get('h4').contains('Espresso Con Panna');
     coffeeHeader.contains('$14.00');
 
@@ -147,8 +132,6 @@ describe('menu', () => {
   })
 
   it('should display Cafe Breve information correctly', () => {
-    cy.visit('/');
-
     const coffeeHeader = cy.get('h4').contains('Cafe Breve');
     coffeeHeader.contains('$15.00');
 
@@ -168,8 +151,6 @@ describe('menu', () => {
   })
 
   it('should display Espresso title in Chinese', () => {
-    cy.visit('/');
-
     const coffeeTitle = cy.get('h4').contains('Espresso').dblclick();
     coffeeTitle.contains('特浓咖啡');
   })
@@ -182,57 +163,41 @@ describe('menu', () => {
   })
 
   it('should display Cappuccino title in Chinese', () => {
-    cy.visit('/');
-
     const coffeeTitle = cy.get('h4').contains('Cappuccino').dblclick();
     coffeeTitle.contains('卡布奇诺');
   })
 
   it('should display Mocha title in Chinese', () => {
-    cy.visit('/');
-
     const coffeeTitle = cy.get('h4').contains('Mocha').dblclick();
     coffeeTitle.contains('摩卡');
   })
 
   it('should display Flat White title in Chinese', () => {
-    cy.visit('/');
-
     const coffeeTitle = cy.get('h4').contains('Flat White').dblclick();
     coffeeTitle.contains('平白咖啡');
   })
 
   it('should display Americano title in Chinese', () => {
-    cy.visit('/');
-
     const coffeeTitle = cy.get('h4').contains('Americano').dblclick();
     coffeeTitle.contains('美式咖啡');
   })
 
   it('should display Cafe Latte title in Chinese', () => {
-    cy.visit('/');
-
     const coffeeTitle = cy.get('h4').contains('Cafe Latte').dblclick();
     coffeeTitle.contains('拿铁');
   })
 
   it('should display Espresso Con Panna title in Chinese', () => {
-    cy.visit('/');
-
     const coffeeTitle = cy.get('h4').contains('Espresso Con Panna').dblclick();
     coffeeTitle.contains('浓缩康宝蓝');
   })
 
   it('should display Cafe Breve title in Chinese', () => {
-    cy.visit('/');
-
     const coffeeTitle = cy.get('h4').contains('Cafe Breve').dblclick();
     coffeeTitle.contains('半拿铁');
   })
 
   it('should summarize selected products', () => {
-    cy.visit('/');
-
     cy.get('[data-cy="Cafe-Latte"]').click();
     cy.get('[data-cy="Espresso-Con Panna"]').click();
 
@@ -244,8 +209,6 @@ describe('menu', () => {
   })
 
   it('should add fourth coffee in cart when accepted', () => {
-    cy.visit('/');
-
     cy.get('[data-cy="Espresso"]').click();
     cy.get('[data-cy="Espresso-Macchiato"]').click();
     cy.get('[data-cy="Cappuccino"]').click();
@@ -274,8 +237,6 @@ describe('menu', () => {
   })
 
   it('should omit fourth coffee in cart when rejected', () => {
-    cy.visit('/');
-
     cy.get('[data-cy="Espresso"]').click();
     cy.get('[data-cy="Espresso-Macchiato"]').click();
     cy.get('[data-cy="Cappuccino"]').click();
@@ -300,7 +261,6 @@ describe('menu', () => {
   })
 
   it('should increase cart total when a product is added', () => {
-    cy.visit('/');
     cy.get('[data-cy="Cappuccino"]').click();
 
     cy.get('[aria-label="Cart page"]').click();
@@ -313,7 +273,6 @@ describe('menu', () => {
   })
 
   it('should decrease cart total when a product is removed', () => {
-    cy.visit('/');
     cy.get('[data-cy="Flat-White"]').click();
     cy.get('[data-cy="Americano"]').click();
 
@@ -327,7 +286,6 @@ describe('menu', () => {
   })
 
   it('should open cart dialog and add coffe to cart', () => {
-    cy.visit('/');
     cy.get('[data-cy="Americano"]').rightclick();
     cy.get('[data-cy="add-to-cart-modal"]').find('Form').contains('Yes').click();
     cy.get('[aria-label="Cart page"]').click();
@@ -340,7 +298,6 @@ describe('menu', () => {
   })
 
   it('should open cart dialog and keep cart empty', () => {
-    cy.visit('/');
     cy.get('[data-cy="Espresso"]').rightclick();
     cy.get('[data-cy="add-to-cart-modal"]').find('Form').contains('No').click();
     cy.get('[aria-label="Cart page"]').click();
@@ -350,7 +307,6 @@ describe('menu', () => {
   })
 
   it('should alert on empty name for payment data', () => {
-    cy.visit('/');
     cy.get('[data-cy="Espresso"]').click();
     cy.get('[data-cy="Espresso-Macchiato"]').click();
 
@@ -368,7 +324,6 @@ describe('menu', () => {
   })
 
   it('should alert on empty mail for payment data', () => {
-    cy.visit('/');
     cy.get('[data-cy="Espresso"]').click();
     cy.get('[data-cy="Espresso-Macchiato"]').click();
 
@@ -386,7 +341,6 @@ describe('menu', () => {
   })
 
   it('should submit payment details when personal data is completed', () => {
-    cy.visit('/');
     cy.get('[data-cy="Espresso"]').click();
     cy.get('[data-cy="Espresso-Macchiato"]').click();
 
