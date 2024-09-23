@@ -1,5 +1,7 @@
 describe('menu', () => {
 
+  const coffeeNameTranslations = require('../fixtures/coffeeNames.json')
+
   beforeEach(() => {
     cy.visit('/');
   })
@@ -150,51 +152,12 @@ describe('menu', () => {
     .should('have.attr', 'style', 'height: 15%;');
   })
 
-  it('should display Espresso title in Chinese', () => {
-    const coffeeTitle = cy.get('h4').contains('Espresso').dblclick();
-    coffeeTitle.contains('特浓咖啡');
-  })
-
-  it('should display Espresso Macchiato title in Chinese', () => {
-    cy.visit('/');
-
-    const coffeeTitle = cy.get('h4').contains('Espresso Macchiato').dblclick();
-    coffeeTitle.contains('浓缩玛奇朵');
-  })
-
-  it('should display Cappuccino title in Chinese', () => {
-    const coffeeTitle = cy.get('h4').contains('Cappuccino').dblclick();
-    coffeeTitle.contains('卡布奇诺');
-  })
-
-  it('should display Mocha title in Chinese', () => {
-    const coffeeTitle = cy.get('h4').contains('Mocha').dblclick();
-    coffeeTitle.contains('摩卡');
-  })
-
-  it('should display Flat White title in Chinese', () => {
-    const coffeeTitle = cy.get('h4').contains('Flat White').dblclick();
-    coffeeTitle.contains('平白咖啡');
-  })
-
-  it('should display Americano title in Chinese', () => {
-    const coffeeTitle = cy.get('h4').contains('Americano').dblclick();
-    coffeeTitle.contains('美式咖啡');
-  })
-
-  it('should display Cafe Latte title in Chinese', () => {
-    const coffeeTitle = cy.get('h4').contains('Cafe Latte').dblclick();
-    coffeeTitle.contains('拿铁');
-  })
-
-  it('should display Espresso Con Panna title in Chinese', () => {
-    const coffeeTitle = cy.get('h4').contains('Espresso Con Panna').dblclick();
-    coffeeTitle.contains('浓缩康宝蓝');
-  })
-
-  it('should display Cafe Breve title in Chinese', () => {
-    const coffeeTitle = cy.get('h4').contains('Cafe Breve').dblclick();
-    coffeeTitle.contains('半拿铁');
+  it('should display each coffee name in Chinese', () => {
+    var coffeeTitle;
+    coffeeNameTranslations.forEach(coffeeName => {
+      coffeeTitle = cy.get('h4').contains(coffeeName.coffeeName).dblclick();
+      coffeeTitle.contains(coffeeName.translatedCoffeeName);
+    })
   })
 
   it('should summarize selected products', () => {
