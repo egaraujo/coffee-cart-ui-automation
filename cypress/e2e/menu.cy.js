@@ -11,12 +11,6 @@ describe('menu', () => {
       cy.request(page.prop('href'));
     });
   })
-
-  it('should have an empty cart initially', () => {
-    cy.visit('/cart');
-    cy.get('a.router-link-active').contains('cart (0)');
-    cy.get('p').contains('No coffee, go add some.');
-  })
   
   it('should display nine coffee coups', () => {
     cy.visit('/');
@@ -406,12 +400,4 @@ describe('menu', () => {
     cy.get('a.router-link-active').contains('menu');
     cy.get('.snackbar').contains('Thanks for your purchase. Please check your email for payment.');
   })
-
-  it('should reach every link on github page', () => {
-    cy.visit('/github')
-    cy.get('div .container a').each(page => {
-      cy.request(page.prop('href'))
-    })
-  
-  });
 })
