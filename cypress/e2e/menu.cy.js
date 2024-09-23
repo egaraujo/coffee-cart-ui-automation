@@ -1,6 +1,7 @@
 describe('menu', () => {
 
-  const coffeeNameTranslations = require('../fixtures/coffeeNames.json')
+  const coffeeNameTranslations = require('../fixtures/coffeeNameTranslations.json')
+  const coffeeCupCompositions = require('../fixtures/coffeeCupCompositions.json')
 
   beforeEach(() => {
     cy.visit('/');
@@ -20,143 +21,27 @@ describe('menu', () => {
     cy.get('li div.cup-body').should('have.length', 9);
   })
 
-  it('should display Espresso information correctly', () => {
-    const coffeeHeader = cy.get('h4').contains('Espresso');
-    coffeeHeader.contains('$10.00');
+  it('should display each coffee cup information correctly', () => {
+    coffeeCupCompositions.forEach(coffeeCup => {
+      const coffeeHeader = cy.get('h4').contains(coffeeCup.name);
+      coffeeHeader.contains(coffeeCup.price);
 
-    cy.get('[data-cy="Espresso"]').find('div').should('have.length', 1);
+      var cupLocator = "[data-cy='" + coffeeCup.dataCy + "']"
+      var ingredients = coffeeCup.ingredients
 
-    cy.get('[data-cy="Espresso"]').find('div.espresso')
-          .should('have.attr', 'style', 'height: 30%;');
-  })
+      cy.get(cupLocator).find('div').should('have.length', ingredients.length);
 
-  it('should display Espresso Macchiato information correctly', () => {
-    const coffeeHeader = cy.get('h4').contains('Espresso Macchiato');
-    coffeeHeader.contains('$12.00');
-
-    cy.get('[data-cy="Espresso-Macchiato"]').find('div').should('have.length', 2);
-
-    cy.get('[data-cy="Espresso-Macchiato"]').find('div.espresso')
-    .should('have.attr', 'style', 'height: 30%;');
-
-    cy.get('[data-cy="Espresso-Macchiato"]').find('div.milk.foam')
-    .should('have.attr', 'style', 'height: 15%;');
-  })
-
-  it('should display Capuccino information correctly', () => {
-    const coffeeHeader = cy.get('h4').contains('Cappuccino');
-    coffeeHeader.contains('$19.00');
-
-    cy.get('[data-cy="Cappuccino"]').find('div').should('have.length', 3);
-
-    cy.get('[data-cy="Cappuccino"]').find('div.espresso')
-    .should('have.attr', 'style', 'height: 30%;');
-
-    cy.get('[data-cy="Cappuccino"]').find('div.steamed.milk')
-    .should('have.attr', 'style', 'height: 20%;');
-
-    cy.get('[data-cy="Cappuccino"]').find('div.milk.foam')
-    .should('have.attr', 'style', 'height: 50%;');
-  })
-
-  it('should display Mocha information correctly', () => {
-    const coffeeHeader = cy.get('h4').contains('Mocha');
-    coffeeHeader.contains('$8.00');
-
-    cy.get('[data-cy="Mocha"]').find('div').should('have.length', 4);
-
-    cy.get('[data-cy="Mocha"]').find('div.espresso')
-    .should('have.attr', 'style', 'height: 30%;');
-
-    cy.get('[data-cy="Mocha"]').find('div.chocolate.syrup')
-    .should('have.attr', 'style', 'height: 20%;');
-
-    cy.get('[data-cy="Mocha"]').find('div.steamed.milk')
-    .should('have.attr', 'style', 'height: 25%;');
-
-    cy.get('[data-cy="Mocha"]').find('div.whipped.cream')
-    .should('have.attr', 'style', 'height: 25%;');
-  })
-
-  it('should display Flat White information correctly', () => {
-    const coffeeHeader = cy.get('h4').contains('Flat White');
-    coffeeHeader.contains('$18.00');
-
-    cy.get('[data-cy="Flat-White"]').find('div').should('have.length', 2);
-
-    cy.get('[data-cy="Flat-White"]').find('div.espresso')
-    .should('have.attr', 'style', 'height: 30%;');
-
-    cy.get('[data-cy="Flat-White"]').find('div.steamed.milk')
-    .should('have.attr', 'style', 'height: 50%;');
-  })
-
-  it('should display Americano information correctly', () => {
-    const coffeeHeader = cy.get('h4').contains('Americano');
-    coffeeHeader.contains('$7.00');
-
-    cy.get('[data-cy="Americano"]').find('div').should('have.length', 2);
-
-    cy.get('[data-cy="Americano"]').find('div.espresso')
-    .should('have.attr', 'style', 'height: 30%;');
-
-    cy.get('[data-cy="Americano"]').find('div.water')
-    .should('have.attr', 'style', 'height: 70%;');
-  })
-
-  it('should display Caffe Latte information correctly', () => {
-    const coffeeHeader = cy.get('h4').contains('Cafe Latte');
-    coffeeHeader.contains('$16.00');
-
-    cy.get('[data-cy="Cafe-Latte"]').find('div').should('have.length', 3);
-
-    cy.get('[data-cy="Cafe-Latte"]').find('div.espresso')
-    .should('have.attr', 'style', 'height: 30%;');
-
-    cy.get('[data-cy="Cafe-Latte"]').find('div.steamed.milk')
-    .should('have.attr', 'style', 'height: 50%;');
-
-    cy.get('[data-cy="Cafe-Latte"]').find('div.milk.foam')
-    .should('have.attr', 'style', 'height: 20%;');
-  })
-
-  it('should display Espresso Con Panna information correctly', () => {
-    const coffeeHeader = cy.get('h4').contains('Espresso Con Panna');
-    coffeeHeader.contains('$14.00');
-
-    cy.get('[data-cy="Espresso-Con Panna"]').find('div').should('have.length', 2);
-
-    cy.get('[data-cy="Espresso-Con Panna"]').find('div.espresso')
-    .should('have.attr', 'style', 'height: 30%;');
-
-    cy.get('[data-cy="Espresso-Con Panna"]').find('div.whipped.cream')
-    .should('have.attr', 'style', 'height: 15%;');
-  })
-
-  it('should display Cafe Breve information correctly', () => {
-    const coffeeHeader = cy.get('h4').contains('Cafe Breve');
-    coffeeHeader.contains('$15.00');
-
-    cy.get('[data-cy="Cafe-Breve"]').find('div').should('have.length', 4);
-
-    cy.get('[data-cy="Cafe-Breve"]').find('div.espresso')
-    .should('have.attr', 'style', 'height: 25%;');
-
-    cy.get('[data-cy="Cafe-Breve"]').find('div.steamed.milk')
-    .should('have.attr', 'style', 'height: 30%;');
-
-    cy.get('[data-cy="Cafe-Breve"]').find('div.steamed.cream')
-    .should('have.attr', 'style', 'height: 30%;');
-
-    cy.get('[data-cy="Cafe-Breve"]').find('div.milk.foam')
-    .should('have.attr', 'style', 'height: 15%;');
+      ingredients.forEach(ingredient => {
+        cy.verifyIngredient(cupLocator, ingredient.name, ingredient.percentage)
+      })
+    })
   })
 
   it('should display each coffee name in Chinese', () => {
-    var coffeeTitle;
-    coffeeNameTranslations.forEach(coffeeName => {
-      coffeeTitle = cy.get('h4').contains(coffeeName.coffeeName).dblclick();
-      coffeeTitle.contains(coffeeName.translatedCoffeeName);
+      var coffeeTitle;
+      coffeeNameTranslations.forEach(coffee => {
+      coffeeTitle = cy.get('h4').contains(coffee.originalCoffeeName).dblclick();
+      coffeeTitle.contains(coffee.translatedCoffeeName);
     })
   })
 

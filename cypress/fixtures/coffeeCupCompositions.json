@@ -1,0 +1,148 @@
+[
+  { "name": "Espresso",
+    "dataCy": "Espresso",
+    "price": "$10.00", 
+    "ingredients": [
+      {
+        "name": "div.espresso",
+        "percentage": "height: 30%;"
+      }
+    ]
+  },
+  { "name": "Espresso Macchiato",
+    "dataCy": "Espresso-Macchiato",
+    "price": "$12.00", 
+    "ingredients": [
+      {
+        "name": "div.espresso",
+        "percentage": "height: 30%;"
+      },
+      {
+        "name": "div.milk.foam",
+        "percentage": "height: 15%;"
+      }
+    ]
+  },
+  { "name": "Cappuccino",
+    "dataCy": "Cappuccino",
+    "price": "$19.00", 
+    "ingredients": [
+      {
+        "name": "div.espresso",
+        "percentage": "height: 30%;"
+      },
+      {
+        "name": "div.steamed.milk",
+        "percentage": "height: 20%;"
+      },
+      {
+        "name": "div.milk.foam",
+        "percentage": "height: 50%;"
+      }
+    ]
+  },
+  { "name": "Mocha",
+    "dataCy": "Mocha",
+    "price": "$8.00", 
+    "ingredients": [
+      {
+        "name": "div.espresso",
+        "percentage": "height: 30%;"
+      },
+      {
+        "name": "div.chocolate.syrup",
+        "percentage": "height: 20%;"
+      },
+      {
+        "name": "div.steamed.milk",
+        "percentage": "height: 25%;"
+      },
+      {
+        "name": "div.whipped.cream",
+        "percentage": "height: 25%;"
+      }
+    ]
+  },
+  { "name": "Flat White",
+    "dataCy": "Flat-White",
+    "price": "$18.00", 
+    "ingredients": [
+      {
+        "name": "div.espresso",
+        "percentage": "height: 30%;"
+      },
+      {
+        "name": "div.steamed.milk",
+        "percentage": "height: 50%;"
+      }
+    ]
+  },
+  { "name": "Americano",
+    "dataCy": "Americano",
+    "price": "$7.00", 
+    "ingredients": [
+      {
+        "name": "div.espresso",
+        "percentage": "height: 30%;"
+      },
+      {
+        "name": "div.water",
+        "percentage": "height: 70%;"
+      }
+    ]
+  },
+  { "name": "Cafe Latte",
+    "dataCy": "Cafe-Latte",
+    "price": "$16.00", 
+    "ingredients": [
+      {
+        "name": "div.espresso",
+        "percentage": "height: 30%;"
+      },
+      {
+        "name": "div.steamed.milk",
+        "percentage": "height: 50%;"
+      },
+      {
+        "name": "div.milk.foam",
+        "percentage": "height: 20%;"
+      }
+    ]
+  },
+  { "name": "Espresso Con Panna",
+    "dataCy": "Espresso-Con Panna",
+    "price": "$14.00", 
+    "ingredients": [
+      {
+        "name": "div.espresso",
+        "percentage": "height: 30%;"
+      },
+      {
+        "name": "div.whipped.cream",
+        "percentage": "height: 15%;"
+      }
+    ]
+  },
+  { "name": "Cafe Breve",
+    "dataCy": "Cafe-Breve",
+    "price": "$15.00", 
+    "ingredients": [
+      {
+        "name": "div.espresso",
+        "percentage": "height: 25%;"
+      },
+      {
+        "name": "div.steamed.milk",
+        "percentage": "height: 30%;"
+      },
+      {
+        "name": "div.steamed.cream",
+        "percentage": "height: 30%;"
+      },
+      {
+        "name": "div.milk.foam",
+        "percentage": "height: 15%;"
+      }
+    ]
+  }
+]
