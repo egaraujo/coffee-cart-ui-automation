@@ -65,21 +65,10 @@ describe('menu', () => {
     cy.get('[aria-label="Cart page"]').click();
     cy.get('a.router-link-active').contains('cart (4)');
 
-    cy.get('li.list-item').find('div').contains('(Discounted) Mocha');
-    cy.get('li.list-item').find('div').contains('$4.00 x 1');
-    cy.get('.list-item > :nth-child(3)').contains('$4.00');
-
-    cy.get('li.list-item').find('div').contains('Cappuccino');
-    cy.get('li.list-item').find('div').contains('$19.00 x 1');
-    cy.get('.list-item > :nth-child(3)').contains('$19.00');
-
-    cy.get('li.list-item').find('div').contains('Espresso');
-    cy.get('li.list-item').find('div').contains('$10.00 x 1');
-    cy.get('.list-item > :nth-child(3)').contains('$10.00');
-
-    cy.get('li.list-item').find('div').contains('Espresso Macchiato');
-    cy.get('li.list-item').find('div').contains('$12.00 x 1');
-    cy.get('.list-item > :nth-child(3)').contains('$12.00');
+    cy.verifyCartLine('(Discounted) Mocha', '$4.00 x 1', '$4.00');
+    cy.verifyCartLine('Cappuccino', '$19.00 x 1', '$19.00');
+    cy.verifyCartLine('Espresso', '$10.00 x 1', '$10.00');
+    cy.verifyCartLine('Espresso Macchiato', '$12.00 x 1', '$12.00');
 
     cy.get('[data-test="checkout"]').contains('Total: $45.00');  
   })
@@ -93,18 +82,10 @@ describe('menu', () => {
     cy.get('[aria-label="Cart page"]').click();
     cy.get('a.router-link-active').contains('cart (3)');
 
-    cy.get('li.list-item').find('div').contains('Cappuccino');
-    cy.get('li.list-item').find('div').contains('$19.00 x 1');
-    cy.get('.list-item > :nth-child(3)').contains('$19.00');
-
-    cy.get('li.list-item').find('div').contains('Espresso');
-    cy.get('li.list-item').find('div').contains('$10.00 x 1');
-    cy.get('.list-item > :nth-child(3)').contains('$10.00');
-
-    cy.get('li.list-item').find('div').contains('Espresso Macchiato');
-    cy.get('li.list-item').find('div').contains('$12.00 x 1');
-    cy.get('.list-item > :nth-child(3)').contains('$12.00');
-
+    cy.verifyCartLine('Cappuccino', '$19.00 x 1', '$19.00');
+    cy.verifyCartLine('Espresso', '$10.00 x 1', '$10.00');
+    cy.verifyCartLine('Espresso Macchiato', '$12.00 x 1', '$12.00');
+    
     cy.get('[data-test="checkout"]').contains('Total: $41.00');  
   })
 

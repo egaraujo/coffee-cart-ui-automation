@@ -29,3 +29,9 @@ Cypress.Commands.add('verifyIngredient', (cup, ingredient, percentage) => {
       .find(ingredient)
       .should('have.attr', 'style', percentage);
 })
+
+Cypress.Commands.add('verifyCartLine', (name, quantity, price) => {
+  cy.get('li.list-item').find('div').contains(name);
+  cy.get('li.list-item').find('div').contains(quantity);
+  cy.get('.list-item > :nth-child(3)').contains(price);
+})
