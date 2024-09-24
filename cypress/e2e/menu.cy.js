@@ -2,6 +2,7 @@ describe('menu', () => {
 
   const coffeeNameTranslations = require('../fixtures/coffeeNameTranslations.json')
   const coffeeCupCompositions = require('../fixtures/coffeeCupCompositions.json')
+  const customerInformation = require('../fixtures/customerInformation.json')
 
   beforeEach(() => {
     cy.visit('/');
@@ -85,7 +86,7 @@ describe('menu', () => {
     cy.verifyCartLine('Cappuccino', '$19.00 x 1', '$19.00');
     cy.verifyCartLine('Espresso', '$10.00 x 1', '$10.00');
     cy.verifyCartLine('Espresso Macchiato', '$12.00 x 1', '$12.00');
-    
+
     cy.get('[data-test="checkout"]').contains('Total: $41.00');  
   })
 
@@ -142,7 +143,7 @@ describe('menu', () => {
     cy.get('[aria-label="Cart page"]').click();
 
     cy.get('[data-test="checkout"]').click();
-    cy.get('#email').type('moe@howard.com');
+    cy.get('#email').type(customerInformation.email);
 
     cy.get('#submit-payment').click();
 
@@ -159,7 +160,7 @@ describe('menu', () => {
     cy.get('[aria-label="Cart page"]').click();
 
     cy.get('[data-test="checkout"]').click();
-    cy.get('#name').type('Moe Howard');
+    cy.get('#name').type(customerInformation.name);
 
     cy.get('#submit-payment').click();
     
@@ -176,8 +177,8 @@ describe('menu', () => {
     cy.get('[aria-label="Cart page"]').click();
 
     cy.get('[data-test="checkout"]').click();
-    cy.get('#name').type('Moe Howard');
-    cy.get('#email').type('moe@howard.com');
+    cy.get('#name').type(customerInformation.name);
+    cy.get('#email').type(customerInformation.email);
     cy.get('#submit-payment').click();
     
     cy.get('a.router-link-active').contains('menu');
